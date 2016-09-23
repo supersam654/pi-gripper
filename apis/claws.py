@@ -1,16 +1,16 @@
-# TODO: Figure out how to handle two different claws.
+# QUESTION: Figure out how to handle two different claws.
 LEFT_CLAW = 1
 RIGHT_CLAW = 2
 
 def is_tip_touching(claw):
     """True if the tip of the given claw is touching something."""
     # NEED: Pressure sensor on tip of each claw.
-    pass # TODO: Implement
+    return True # TODO: Implement
 
 def is_inside_touching(claw):
     """True if an inside digit is touching the object."""
     # NEED: At least one pressure sensor on the inside of each claw.
-    pass # TODO: Implement
+    return True # TODO: Implement
 
 def retract(claw):
     """Move the claw all the way back from the object."""

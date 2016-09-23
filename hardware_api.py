@@ -11,7 +11,7 @@ def position_bottom_plate_on_ground():
         _bottom_plate.lower()
     _bottom_plate.rotate_down()
 
-def try_grip():
+def try_gripping():
     while not _claws.is_gripping(_claws.LEFT_CLAW):
         _claws.grip(_claws.LEFT_CLAW)
     if _claws.is_tip_touching(_claws.LEFT_CLAW) and not _claws.is_inside_touching(_claws.LEFT_CLAW):
@@ -32,8 +32,8 @@ def finish_gripping():
         _claws.grip(_claws.RIGHT_CLAW)
 
 def retract_claws():
-    _claws.retract(_claws.LEFT)
-    _claws.retract(_claws.RIGHT)
+    _claws.retract(_claws.LEFT_CLAW)
+    _claws.retract(_claws.RIGHT_CLAW)
 
 def drop_top_plate():
     _top_plate.rotate_down()

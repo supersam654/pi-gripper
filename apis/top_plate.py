@@ -11,4 +11,4 @@ def rotate_down():
 def is_touching():
     """True if the plate is touching the object."""
     # NEED: Pressure sensor on the top plate.
-    pass # TODO: Implement
+    return True # TODO: Implement

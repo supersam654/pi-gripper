@@ -1,4 +1,4 @@
-def rotate_up
+def rotate_up():
     """Rotate the plate so the tip is higher up."""
     # QUESTION: How do we know when the plate is high enough to be out of the way?
     pass # TODO: Implement
@@ -27,4 +27,4 @@ def insert():
 def is_back_touching():
     """True if the back side of the plate is touching the ground."""
     # NEED: Pressure sensor on the back side of the plate.
-    pass # TODO: Implement.
+    return True # TODO: Implement.
