@@ -1,6 +1,6 @@
 # Raspberry Pi Gripper
 
-Code for picking up a book, waterbottle, or tomato.
+Code for picking up a book, water bottle, or tomato.
 
 ## General Flow:
 

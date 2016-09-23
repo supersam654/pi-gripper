@@ -1,5 +1,6 @@
 import hardware_api as api
 
+# QUESTION: How is this getting called?
 def main():
     api.position_bottom_plate_on_ground()
     api.retract_bottom_plate()
