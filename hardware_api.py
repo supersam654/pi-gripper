@@ -6,10 +6,7 @@ import apis.bottom_plate as _bottom_plate
 import apis.arm as _arm
 
 def position_bottom_plate_on_ground():
-    _bottom_plate.rotate_up()
-    while not _bottom_plate.is_back_touching():
-        _bottom_plate.lower()
-    _bottom_plate.rotate_down()
+    _arm.lower()
 
 def try_gripping():
     while not _claws.is_gripping(_claws.LEFT_CLAW):

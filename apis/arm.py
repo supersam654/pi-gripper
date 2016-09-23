@@ -1,4 +1,7 @@
 def lift():
     """Move the robotic arm up."""
-    # QUESTION: Do we have to implement this?
+    pass # TODO: Implement.
+
+def lower():
+    """Lower the arm until the bottom plate is touching the ground."""
     pass # TODO: Implement.
