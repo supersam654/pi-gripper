@@ -1,6 +1,5 @@
 #include "grab.h"
 #include "release.h"
-#include "pins.h"
 #include "hardware.h"
 
 void setup() {
