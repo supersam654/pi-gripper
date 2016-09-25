@@ -1,7 +1,5 @@
 #ifndef API_H
 #define API_H
-#include <Arduino.h>
-
 void api_positionBottomPlateOnGround();
 bool api_tryGripping();
 void api_finishGripping();

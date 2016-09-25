@@ -8,7 +8,7 @@ void api_positionBottomPlateOnGround() {
   }    
 }
 
-boolean _tryGrip(int claw) {
+boolean tryGrip(int claw) {
   while (!claws_isGripping(claw)) {
     claws_setPosition(claw, claws_getPosition(claw) + 1);
     delay(15);
@@ -22,12 +22,12 @@ boolean _tryGrip(int claw) {
 
 bool api_tryGripping() {
   // True if both claws grabbed the inside. False if either hit the tip.
-  return _tryGrip(LEFT_CLAW) && _tryGrip(RIGHT_CLAW);
+  return tryGrip(LEFT_CLAW) && _tryGrip(RIGHT_CLAW);
 }
 
 void api_finishGripping() {
-  _tryGrip(LEFT_CLAW);
-  _tryGrip(RIGHT_CLAW);
+  tryGrip(LEFT_CLAW);
+  tryGrip(RIGHT_CLAW);
 }
 
 void api_retractClaws() {
