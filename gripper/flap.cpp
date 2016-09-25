@@ -1,8 +1,8 @@
 #include <Servo.h>
 #include "hardware.h"
 
-Servo flapServo;
-float initialPressure;
+static Servo flapServo;
+static float initialPressure;
 
 void flap_init() {
   flapServo.attach(FLAP_SERVO_PIN);

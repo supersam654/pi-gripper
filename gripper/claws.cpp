@@ -1,11 +1,11 @@
 #include <Servo.h>
 #include "hardware.h"
 
-Servo servos[2];
-int tipSensors[2];
-float initialTipLoads[2];
-int flexSensors[2];
-int initialFlexLoads[2];
+static Servo servos[2];
+static int tipSensors[2];
+static float initialTipLoads[2];
+static int flexSensors[2];
+static int initialFlexLoads[2];
 
 void claws_init() {
   Servo leftClawServo;

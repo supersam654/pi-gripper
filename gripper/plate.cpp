@@ -1,6 +1,6 @@
 #include "hardware.h"
 
-float initialPressure;
+static float initialPressure;
 // https://www.firgelliauto.com/blogs/news/18090523-how-to-use-an-arduino-with-firgelli-automations-linear-actuators
 void plate_init() {
   pinMode(PLATE_A, OUTPUT);
