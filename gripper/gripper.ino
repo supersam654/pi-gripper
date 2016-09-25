@@ -6,7 +6,12 @@ void setup() {
   hardware_init();
 }
 
+void test() {
+  
+}
+
 void loop() {
+  test();
   // grab_item();
   // release_item();
   // put your main code here, to run repeatedly:

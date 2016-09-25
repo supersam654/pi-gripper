@@ -3,6 +3,9 @@
 
 Servo servos[2];
 int tipSensors[2];
+float initialTipLoads[2];
+int flexSensors[2];
+int initialFlexLoads[2];
 
 void claws_init() {
   Servo leftClawServo;
@@ -14,23 +17,23 @@ void claws_init() {
 
   tipSensors[0] = LEFT_CLAW_LOAD_SENSOR_PIN;
   tipSensors[1] = RIGHT_CLAW_LOAD_SENSOR_PIN;
-}
 
-Servo getServo(int claw) {
-  return servos[claw];
-}
+  initialTipLoads[0] = analogRead(tipSensors[0]) * 1.1;
+  initialTipLoads[1] = analogRead(tipSensors[1]) * 1.1;
 
-int getTipSensor(int claw) {
-  return tipSensors[claw];
+  flexSensors[0] = LEFT_CLAW_FLEX_SENSOR_PIN;
+  flexSensors[1] = RIGHT_CLAW_FLEX_SENSOR_PIN;
+
+  initialFlexLoads[0] = analogRead(flexSensors[0]) * 1.1;
+  initialFlexLoads[1] = analogRead(flexSensors[1]) * 1.1;
 }
 
 bool claws_isTipTouching(int claw) {
-  int tipSensor = getTipSensor(claw);
-  // TODO: HARDWARE
+  return analogRead(tipSensors[claw]) > initialTipLoads[claw];
 }
 
 bool claws_isInsideTouching(int claw) {
-  // TODO: HARDWARE
+  return analogRead(flexSensors[claw]) > initialFlexLoads[claw];
 }
 
 bool claws_isGripping(int claw) {
@@ -38,11 +41,9 @@ bool claws_isGripping(int claw) {
 }
 
 int claws_getPosition(int claw) {
-  Servo servo = getServo(claw);
-  return servo.read();
+  return servos[claw].read();
 }
 
 void claws_setPosition(int claw, int degrees) {
-  Servo servo = getServo(claw);
-  servo.write(degrees);
+  servos[claw].write(degrees);
 }
