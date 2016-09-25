@@ -26,10 +26,12 @@ Code for picking up a book, water bottle, or tomato.
 
 ## Code Overview
 
-The files in `/apis/` deal with low-level functions that talk directly to sensors and other hardware.
+All of the code is in `/gripper/`.
 
-`/hardware_api.py` exposes higher-level functions that abstract away some little details of working with the hardware.
+To adjust what devices have been plugged into various ports, modify the values in `pins.h`.
 
-`grab.py` collects an object into the contraption.
+`gripper.ino` is the main point of entry. It is responsible for calling `grab_item()` from `grab.h` or `release_item()` from `release.h`.
 
-`release.py` puts an object already in the contraption back down.
+`grab.h` and `release.h` have a basic control flow that works with a very high-level API established in `api.h` and implemented in `api.cpp`. This API creates useful, high-level functions from the underlying hardware.
+
+All of functions for directly talking to the hardware are defined in `hardware.h` and implemented in `arm.cpp`, `claws.cpp`, `flap.cpp`, and `plate.cpp`.s
