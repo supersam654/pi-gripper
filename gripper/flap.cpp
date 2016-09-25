@@ -6,7 +6,7 @@ static float initialPressure;
 
 void flap_init() {
   flapServo.attach(FLAP_SERVO_PIN);
-  initialPressure = analogRead(FLAP_LOAD_SENSOR_PIN) * 1.10;
+  initialPressure = analogRead(FLAP_LOAD_SENSOR_PIN) * 1.05;
 }
 boolean flap_isTouching() {
   return analogRead(FLAP_LOAD_SENSOR_PIN) > initialPressure;

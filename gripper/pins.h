@@ -1,14 +1,13 @@
 #ifndef PINS_H
 #define PINS_H
-// For now, digital pins are 0x0* and analog pins are 0x1*.
 
-const int LEFT_CLAW_SERVO_PIN = 0x01;
-const int LEFT_CLAW_FLEX_SENSOR_PIN = 0x10;
-const int LEFT_CLAW_LOAD_SENSOR_PIN = 0x02;
+const int LEFT_CLAW_SERVO_PIN = 3;
+const int LEFT_CLAW_FLEX_SENSOR_PIN = A0;
+const int LEFT_CLAW_LOAD_SENSOR_PIN = 2;
 
 
 const int RIGHT_CLAW_SERVO_PIN = 4;
-const int RIGHT_CLAW_FLEX_SENSOR_PIN = 5;
+const int RIGHT_CLAW_FLEX_SENSOR_PIN = A0;
 const int RIGHT_CLAW_LOAD_SENSOR_PIN = 6;
 
 const int FLAP_SERVO_PIN= 7;

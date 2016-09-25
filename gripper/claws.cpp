@@ -18,14 +18,14 @@ void claws_init() {
   tipSensors[0] = LEFT_CLAW_LOAD_SENSOR_PIN;
   tipSensors[1] = RIGHT_CLAW_LOAD_SENSOR_PIN;
 
-  initialTipLoads[0] = analogRead(tipSensors[0]) * 1.1;
-  initialTipLoads[1] = analogRead(tipSensors[1]) * 1.1;
+  initialTipLoads[0] = analogRead(tipSensors[0]) * 1.05;
+  initialTipLoads[1] = analogRead(tipSensors[1]) * 1.05;
 
   flexSensors[0] = LEFT_CLAW_FLEX_SENSOR_PIN;
   flexSensors[1] = RIGHT_CLAW_FLEX_SENSOR_PIN;
 
-  initialFlexLoads[0] = analogRead(flexSensors[0]) * 1.1;
-  initialFlexLoads[1] = analogRead(flexSensors[1]) * 1.1;
+  initialFlexLoads[0] = analogRead(flexSensors[0]) * 1.05;
+  initialFlexLoads[1] = analogRead(flexSensors[1]) * 1.05;
 }
 
 bool claws_isTipTouching(int claw) {
