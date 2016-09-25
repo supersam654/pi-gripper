@@ -1,15 +1,10 @@
-#include "grab.cpp"
-#include "release.cpp"
+#include "grab.h"
+#include "release.h"
 #include "pins.h"
 #include "hardware.h"
 
 void setup() {
-  Serial.begin(9600);
-
-  leftClawServo.attach(LEFT_CLAW_SERVO_PIN);
-  rightClawServo.attach(RIGHT_CLAW_SERVO_PIN);
-  topFlapperServo.attach(TOP_FLAPPER_SERVO_PIN);
-  bottomPlateActuator.attach(BOTTOM_PLATE_ACTUATOR_PIN);
+  hardware_init();
 }
 
 void loop() {

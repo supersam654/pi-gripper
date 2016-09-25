@@ -1,11 +1,8 @@
-#include "hardware_api.h"
-#include "arm.h"
-#include "claws.h"
-#include "top_flap.h"
-#include "bottom_flap.h"
+#include "api.h"
+#include "hardware.h"
 
 void api_positionBottomPlateOnGround() {
-  while (!bottom_plate_isTouching()) {
+  while (!plate_isTouching()) {
     arm_signal(ARM_DOWN);
     delay(50);
   }    
@@ -13,10 +10,11 @@ void api_positionBottomPlateOnGround() {
 
 boolean _tryGrip(int claw) {
   while (!claws_isGripping(claw)) {
-    claws.grip(claw);
+    claws_setPosition(claw, claws_getPosition(claw) + 1);
+    delay(15);
   }
 
-  if (claws.isTipTouching(claw) && !claws.isInsideTouching(claw)) {
+  if (claws_isTipTouching(claw) && !claws_isInsideTouching(claw)) {
     return false;
   }
   return true;
@@ -33,28 +31,33 @@ void api_finishGripping() {
 }
 
 void api_retractClaws() {
-  claws_retract(LEFT_CLAW);
-  claws_retract(RIGHT_CLAW);
+  claws_setPosition(LEFT_CLAW, 0);
+  claws_setPosition(RIGHT_CLAW, 0);
+  delay(1000);
 }
 
 void api_dropTopFlap() {
-  top_flap_rotateDown();
+  while (!flap_isTouching()) {
+    flap_setAngle(flap_getAngle() + 1);
+    delay(15);
+  }
 }
 
 void api_liftTopFlap() {
-  top_flap_rotateUp();
+  flap_setAngle(0);
+  delay(1000);
 }
 
 void api_insertBottomPlate() {
-  bottom_plate_signal(BOTTOM_PLATE_INSERT);
+  plate_insert();
   delay(1000);
-  bottom_plate_signal(BOTTOM_PLATE_STOP);
+  plate_stop();
 }
 
 void api_retractBottomPlate() {
-  bottom_plate_signal(BOTTOM_PLATE_RETRACT);
+  plate_retract();
   delay(1000);
-  bottom_plate_signal(BOTTOM_PLATE_STOP);
+  plate_stop();
 }
 
 void api_liftArm() {

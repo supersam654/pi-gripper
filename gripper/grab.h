@@ -1,6 +1,8 @@
-#include "hardware_api.h"
+#ifndef GRAB_H
+#define GRAP_H
+#include "api.h"
 
-void grab_item() {
+inline void grab_item() {
   api_positionBottomPlateOnGround();
   bool hitInsideFirst = api_tryGripping();
   if (!hitInsideFirst) {
@@ -12,3 +14,4 @@ void grab_item() {
   api_insertBottomPlate();
   api_liftArm();
 }
+#endif

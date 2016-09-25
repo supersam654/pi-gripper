@@ -1,14 +1,16 @@
 #ifndef HARDWARE_H
 #define HARDWARE_H
+#include "pins.h"
+#include "arm.h"
+#include "flap.h"
+#include "plate.h"
+#include "claws.h"
 
-#########################################
-# Gantry Arm
-#########################################
-const int ARM_UP = 1;
-const int ARM_DOWN = 0;
-void arm_signal(int signal) {
-  // TODO: HARDWARE
-  // Signal the arm to move up or down.
+inline void hardware_init() {
+  Serial.begin(9600);
+  arm_init();
+  flap_init();
+  plate_init();
+  claws_init();
 }
-
-#endif HARDWARE_H
+#endif
