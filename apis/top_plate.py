@@ -1,3 +1,4 @@
+
 # Current sensor and flexible hing
 # When there's a spike in current draw, stop
 # Also have a pressure sensor as a fallback to make sure we hit it.
