@@ -9,9 +9,15 @@ void api_positionBottomPlateOnGround() {
 }
 
 boolean tryGrip(int claw) {
-  while (!claws_isGripping(claw)) {
+  // Keep trying to grip unless the claw is very rotated in which case give up.
+  while (!claws_isGripping(claw) || claws_getPosition(claw) >= MAX_SERVO_ROTATION) {
     claws_setPosition(claw, claws_getPosition(claw) + 1);
     delay(15);
+  }
+
+  if (claws_getPosition(claw) >= MAX_SERVO_ROTATION) {
+    // We never hit anything.
+    return false;
   }
 
   if (claws_isTipTouching(claw) && !claws_isInsideTouching(claw)) {

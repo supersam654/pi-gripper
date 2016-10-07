@@ -1,9 +1,8 @@
 #include "hardware.h"
 
 void arm_init() {
-  // TODO: Initialize the arm.
+  // Do nothing because the arm is manually controlled.
 }
 void arm_signal(int signal) {
-  // TODO: HARDWARE
-  // Signal the arm to move up or down.
+  // Do nothing because the arm is manually controlled.
 }

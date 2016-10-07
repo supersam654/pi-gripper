@@ -18,22 +18,24 @@ void claws_init() {
   tipSensors[0] = LEFT_CLAW_LOAD_SENSOR_PIN;
   tipSensors[1] = RIGHT_CLAW_LOAD_SENSOR_PIN;
 
-  initialTipLoads[0] = analogRead(tipSensors[0]) * 1.05;
-  initialTipLoads[1] = analogRead(tipSensors[1]) * 1.05;
+  initialTipLoads[0] = analogRead(tipSensors[0]);
+  initialTipLoads[1] = analogRead(tipSensors[1]);
 
   flexSensors[0] = LEFT_CLAW_FLEX_SENSOR_PIN;
   flexSensors[1] = RIGHT_CLAW_FLEX_SENSOR_PIN;
 
-  initialFlexLoads[0] = analogRead(flexSensors[0]) * 1.05;
-  initialFlexLoads[1] = analogRead(flexSensors[1]) * 1.05;
+  initialFlexLoads[0] = analogRead(flexSensors[0]);
+  initialFlexLoads[1] = analogRead(flexSensors[1]);
 }
 
 bool claws_isTipTouching(int claw) {
-  return analogRead(tipSensors[claw]) > initialTipLoads[claw];
+  float currentReading = analogRead(tipSensors[claw]);
+  return exceedsThreshold(initialFlexLoads[claw], currentReading, LOAD_SENSOR_THRESHOLD);
 }
 
 bool claws_isInsideTouching(int claw) {
-  return analogRead(flexSensors[claw]) > initialFlexLoads[claw];
+  float currentReading = analogRead(flexSensors[claw]);
+  return exceedsThreshold(initialFlexLoads[claw], currentReading, FLEX_SENSOR_THRESHOLD);
 }
 
 bool claws_isGripping(int claw) {
