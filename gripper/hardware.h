@@ -8,8 +8,10 @@
 const int MIN_SERVO_ROTATION = 20;
 const int MAX_SERVO_ROTATION = 150;
 
+const int BOOK_ROTATION_THRESHOLD = 120;
+
 // Fudge factor for various sensors:
-const float LOAD_SENSOR_THRESHOLD = 0.1;
+const float LOAD_SENSOR_THRESHOLD = 0.5;
 const float FLEX_SENSOR_THRESHOLD = 0.1;
 
 // How many steps the stepper takes to do a full rotation.
@@ -18,6 +20,8 @@ const int STEPS_PER_REVOLUTION = 200;
 inline bool exceedsThreshold(float initialReading, float currentReading, float threshold) {
   float difference = initialReading - currentReading;
   float percentDifference = abs(difference) / initialReading;
+  Serial.println(initialReading);
+  Serial.println(currentReading);
   return percentDifference > threshold;
 }
 
@@ -45,6 +49,7 @@ bool claws_isInsideTouching(int claw);
 bool claws_isGripping(int claw);
 int claws_getPosition(int claw);
 void claws_setPosition(int claw, int degrees);
+void claws_init_sensors();
 
 inline void hardware_init() {
   Serial.begin(9600);

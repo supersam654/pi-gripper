@@ -9,4 +9,5 @@ void api_liftTopFlap();
 void api_insertBottomPlate();
 void api_retractBottomPlate();
 void api_liftArm();
+bool api_identifyBook();
 #endif

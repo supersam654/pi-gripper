@@ -6,6 +6,10 @@ void setup() {
   hardware_init();
 }
 
+void initSensors() {
+  hardware_init();
+}
+
 //void grip() {
 //  while (!claws_isInsideTouching(LEFT_CLAW)) {
 //    Serial.println(analogRead(LEFT_CLAW_FLEX_SENSOR_PIN));
@@ -14,23 +18,32 @@ void setup() {
 //  }
 //}
 //
-//void test() {
-//  claws_setPosition(LEFT_CLAW, 15);
-//  Serial.println("Moving to beginning.");
-//  delay(500);
-//  Serial.println("Gripping.");
-//  grip();
-//  Serial.println("Gripped.");
-//}
+void test() {
+  claws_setPosition(LEFT_CLAW, MIN_SERVO_ROTATION);
+  Serial.println("Retracting.");
+  delay(1000);
+  claws_setPosition(LEFT_CLAW, MAX_SERVO_ROTATION);
+  Serial.println("Extending.");
+  delay(1000);
+}
 
 void loop() {
-//  hardware_init(); // Reset initial states.
 //  test();
-  Serial.println("Test finished.");
-  delay(5000);
-//  grab_item();
-//  release_item();
-//  while (true) {
-//    delay(1000);
-//  }
+//  return;
+  pinMode(MANUAL_PIN, INPUT);
+  while (true) {
+    delay(1000);
+    if (digitalRead(MANUAL_PIN)) {
+      initSensors();
+      grab_item();
+      break;
+    }
+  }
+  while (true) {
+    delay(1000);
+    if (digitalRead(MANUAL_PIN)) {
+      release_item();
+      break;
+    }
+  }
 }
